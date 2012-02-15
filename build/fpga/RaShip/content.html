@@ -1,0 +1,441 @@
+<!-- This file needs to be edited by the lab developer to suit
+the requirements of their lab in particular.-->
+
+<!-- Add class="default" to include any element as it is
+specified in default.html. 
+Do not include class="default" to the elements that you want to
+edit -->
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<div id="experiment"> <!-- The Experiment Document Container-->
+
+  <!-- The lab Header contains the logo and the name of the lab,
+  usually displayed on the top of the page-->
+
+  <header id="experiment-header" class="default">
+  
+    <div id="experiment-header-logo" class="logo">
+      <!-- Enclose the logo image of your lab or write it in 
+      text-->
+      <img src="../images/logo.jpg" />
+    </div>
+
+    <div id="experiment-header-heading" class="heading">
+      <!-- Write the name of your lab and link it to the home 
+      page of your lab (h1 tag is preferred while writing your 
+      lab name)-->
+      <a href="../index.html">Advanced VLSI Virtual Lab</a>	
+    </div>
+
+    <!-- Add any additional element you want to add to the lab 
+    header, For example : Help (Enclosing them with suitable 
+    div is recommended)-->
+
+  </header>
+
+
+  <!-- The lab article is the main content area where all the 
+  experiment content sits-->
+  <article id="experiment-article">
+  
+    <!-- The lab article has an header, optional navigational 
+    menu, number of sections, an optional sidebar and a closing 
+    footer-->
+     <div id="experiment-article-breadcrumb" class="breadcrumb">
+     </div>
+    
+      <header id="experiment-article-heading" class="heading">
+        <!-- You can add a welcome message or title of the 
+        experiment here -->
+        Linear Feedback Shift Register
+        <!-- Add any additional element if required with proper 
+        enclosing-->
+      </header>
+
+      <!-- Navigation menu is useful to organize the view of 
+      multiple sections inside the article-->
+      <nav id="experiment-article-navigation" class="default">
+        <ul id="experiment-article-navigation-menu">
+          <!-- The menu can be dynamically generated to contain 
+          the headings of your sections or instead write the 
+          menu items of your choice individually enclosedu in 
+          <li> tag as shown below-->
+        </ul>
+      </nav>
+
+      <!-- All the sections of your lab or experiment can be 
+      enclosed together with a div element as shown below-->
+      <div id="experiment-article-sections">
+
+        <!-- First section of the article-->
+        <section id="experiment-article-section-1">
+          
+          <div id="experiment-article-section-1-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab -->
+	    <img src="../images/introduction.jpg" />
+	  </div>	
+          
+          <!-- The heading for the section can be enclosed in a 
+          div tag. -->
+          <div id="experiment-article-section-1-heading" 
+          class="heading">
+            Introduction
+          </div>
+
+          <!-- Write the section content inside a paragraph 
+          element, You can also include images with <img> tag -->
+          <div id="experiment-article-section-1-content" 
+          class="content">	
+           LFSR stands for Linear Feedback Shift Register. It is basically a Shift Register with a feedback mechanism where feedback is a linear function of the outputs at various flip-flops. The main use of LFSR is to generate pseudo-random sequence starting from a seed given by the user. It is pseudo-random because once a person knows the seed and the feedback polynomial then he can predict the whole sequence. It is generally used for encryption purpose in millitary and other applications.
+<br />
+<br />
+
+The circuit design for LFSR requires the D-Flipflops and XOR Gates. XOR-Gates are used for generating the linear polynomial for feedback.
+<br />
+<br />
+
+Maximal LFSR is the LFSR which passes through all the possible bit-sequences given a particular number of bits. There is a particular feedback polynomial for given number of bits. 
+
+<br />
+<br />
+This Experiment will let you design a LFSR. You have to give number of bits, seed and the required feedback polynomial as the input. Then you have to make the correct connections. After that you can simulate the circuit. You can also generate the transistor level schematic of the Circuit made by you. You can see some sample Circuits in Example Section.
+
+<br />
+<br />
+So Go Ahead and design Some Good Sequences. Remember All Polynomials may or may not give the complete sequence. You have to find the maximal polynomial if you want to get full range.
+
+
+       </div>
+
+
+      </section>
+
+      <!-- Second section of the article-->
+      <section id="experiment-article-section-2">
+        
+        <div id="experiment-article-section-2-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/theory.jpg" />
+	</div>
+				
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+        <div id="experiment-article-section-2-heading" 
+        class="heading">
+          Theory
+        </div>
+
+
+        <!-- Write the section content inside a paragraph 
+        element, we can also include images with <img> tag -->
+        <div id="experiment-article-section-2-content" 
+        class="content">
+          <div>
+The circuit design for LFSR requires the D-Flipflops and XOR Gates. XOR-Gates are used for generating the linear polynomial for feedback. The linear polynomial is nothing but weighted modulo-2 addition of the outputs of the D-Flipflops. This modulo-2 sum is fed back into the Most Significant bit of the register.
+<br />
+Modulo-2 addition is a sum in which output can be only 1 and 0 i.e.  modulo-2 addition of 3 and 2 is 1. For the remaining text <b>+</b> will denote the modulo-2 addition.
+<br />
+The possible weights are only <b>0</b> or <b>1</b> as we are working with binary. One sample linear feedback polynomial is shown below:
+<br/>
+<center><img src="Sample_Poly.JPG"></center>
+<br/>
+Here Superscripts show the D-Flipflop whose output is included in Polynomial. The above shown Polynomial is a valid polynomial for any LFSR whose size is greater than 13 bits.
+<br />
+As we are dealing only with <b>1</b> and <b>0</b> XOR gate can do the job of a Modulo-2 adder as clear from the truth table shown below.
+<br/>
+
+</div>
+
+<div>
+<br/>
+<center><img src="1ttxor1.gif" align="centre"></center>
+<br/>
+Mathematically modulo-2 addition is  z =(x+y)%2.
+</div>
+
+<div>
+Following Figure shows the working of a 4-bit LFSR with polynomial X^1 + X^0. [Here ^ denotes the superscript.]
+<br />
+<br />
+<center><img src="LFSR-F4.GIF"></center>
+<br />
+<br />
+The left figure is state diagram for the LFSR shown on right.
+<br />
+All polynomials may not give the complete sequence. Complete sequence is a sequence which covers all the possible binary sequences possible. For instance in a 4-bit LFSR there are in total 16 sequences possible but it depends on the seed and Feedback polynomial how many sequences will come in final output. Here Seed is the first sequence from which the LFSR starts.
+<br />
+There are some Polynomials for which the complete sequence will appear irrespective of seed.
+Such Polynomials are called as <b><i>Maximal Polynomial</i></b> and the LFSRs we get from those polynomials are called as <b><i>Maximal LFSRs</i></b>.
+Following Table shows the Maximal Polynomials for LFSRs of 2 to 19 bits. 
+<center><img src="IMAGE_TABLE_POLYNOMIAL.JPG"></center>
+Here <b>1</b> is included just to make it sure that for 2 D-Fliflops in a polynomial we require 2 XOR gates. You can remove that <b>1</b> from Polynomial without loss of generality.
+<br />
+This circuit is totally synchronous circuit controlled by one single clock. All clocks shown in the workspace are perfectly synchronized.
+<br />
+</div>
+
+</div>
+      </section>
+
+
+      <section id="experiment-article-section-3">
+        
+        <div id="experiment-article-section-3-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/objective.jpg" />
+	</div>
+     
+        <div id="experiment-article-section-3-heading" 
+        class="heading">
+          Objective
+        </div>
+
+        <div id="experiment-article-section-3-content" 
+        class="content">
+          <p>
+            In this experiment we are going to design a Linear Feedback register and simulate it to see how a pseudorandom sequence is generated by using simple components. This experiment will also let you learn the transistor level implementation of D-FlipFlop and XOR-Gate using Pass Transistor Logic.
+          </p> 
+       
+       </div>
+
+      </section>
+
+
+      <section id="experiment-article-section-4">
+
+        <div id="experiment-article-section-4-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/simulation.jpg" />
+	</div>
+
+        <div id="experiment-article-section-4-heading" 
+        class="heading">
+          Experiment
+        </div>
+
+        <div id="experiment-article-section-4-content" 
+        class="content">
+          <p>
+	        <center>
+<font size="4"> 
+<a href="./LFSR.html" target="_blank">Experiment</a>
+</font>
+	        
+            
+          </p>
+        </div>
+
+      </section>
+
+      <section id="experiment-article-section-5">
+   
+        <div id="experiment-article-section-5-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/manual.jpg" />
+	</div>
+
+        <div id="experiment-article-section-5-heading" 
+        class="heading">
+          Manual
+        </div>
+
+        <div id="experiment-article-section-5-content" 
+        class="content">
+          <a href="lfsr.ogv" target="_blank">Click Here For Experiment Manual</a>
+          </div>
+
+        </section>
+
+        <section id="experiment-article-section-6">
+      
+          <div id="experiment-article-section-6-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/quizzes.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-6-heading" 
+          class="heading">
+            Quizzes
+          </div>
+
+          <div id="experiment-article-section-6-content" 
+          class="content">
+            
+            <p>
+              <br/>
+
+
+
+<center><a href="#post"><img src="post_quiz.jpg"/></a></center><br/>
+<center><a href="#pre"><img src="pre_quiz.jpg"/></a></center><br/><br/><hr/><hr/><br/><br/>
+<a name="pre"><h1><b>PRE_QUIZ</b></h1></a><hr/><br/>
+<font size="3">
+</font><ul>
+<font size="3"><li> 
+What is Shift Register?
+</li>
+<li>
+What are synchronous Circuits?
+</li>
+<li>
+Show that XOR gate gives modulo-2 sum?
+</li>
+<li>
+What is pass transistor logic?
+</li>
+<li>
+Why Pass transistor is preferred over Complementary CMOS logic?[Bonus]
+</li></font></ul>
+<font size="3"><a name="post"><h1><b>POST_QUIZ</b></h1></a></font><hr/><font size="3"><br/>
+</font><form name="quiz">
+<ol>
+<font size="3"><li><b>How many Polynomials are possible for a 4-bit LFSR?</b><br/>
+   <input type="radio" value="wrong" name="q1"/>8<br/>
+   <input type="radio" value="wrong" name="q1"/>10<br/>
+   <span id="correct1"><input type="radio" value="correct" name="q1"/>16</span><br/>
+   <input type="radio" value="wrong" name="q1"/>4<br/><br/><br/>
+</li>
+</font><hr/>
+
+<font size="3"><li><b>How many Transistors are required for XOR gate(assuming inverted inputs are not available and Pass transistor logic is used)?</b><br/>
+   <input type="radio" value="wrong" name="q2"/>4( 2-NMOS , 2-PMOS)<br/>
+   <input type="radio" value="wrong" name="q2"/>6( 3-NMOS, 3-PMOS)<br/>
+   <input type="radio" value="wrong" name="q2"/>2( 2-PMOS)<br/>
+   <span id="correct2"><input type="radio" value="correct" name="q2"/>8(4-NMOS and 4-PMOS)</span><br/><br/<br/>
+</li>
+</font><hr/>
+
+<font size="3"><li><b>What is the period of an 8-bit Maximal LFSR?</b><br/>
+   <span id="correct3"><input type="radio" value="correct" name="q3"/>255</span><br/>
+   <input type="radio" value="wrong" name="q3"/>216<br/>
+   <input type="radio" value="wrong" name="q3"/>512<br/>
+   <input type="radio" value="wrong" name="q3"/>64<br/><br/>
+</li>
+</font><hr/>
+
+<font size="3"><li><b>How many 2-input XOR gates are required if Polynomial is a 7-bit Maximal LFSR?</b><br/>
+   <span id="correct4"><input type="radio" value="correct" name="q4"/>1</span><br/>
+   <input type="radio" value="wrong" name="q4"/>2<br/>
+   <input type="radio" value="wrong" name="q4"/>3<br/>
+   <input type="radio" value="wrong" name="q4"/>4<br/><br/><br/>
+</li>
+</font><hr/>
+
+
+
+<font size="3"><li><b>Application of LFSR?</b><br/>
+   <input type="radio" value="wrong" name="q5"/>Counters<br/>
+   <span id="correct5"><input type="radio" value="correct" name="q5"/>Encryption of Data</span><br/>
+   <input type="radio" value="wrong" name="q5"/>Multiplier<br/>
+   <input type="radio" value="wrong" name="q5"/>Adder<br/><br/>
+</li>
+</font><hr/>
+
+
+</ol>
+
+<font size="3"><input type="button" value="check quiz" onclick="checkQuiz()"/>
+</font><hr/>
+<textarea name="output" rows="10" cols="80"></textarea>
+</form>
+            </p>
+
+          </div>
+
+        </section>
+
+        <section id="experiment-article-section-7">
+	  
+          <div id="experiment-article-section-7-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab. -->
+	    <img src="../images/procedure.jpg" />
+	  </div>
+	
+          <div id="experiment-article-section-7-heading" 
+          class="heading">
+	    Procedure
+	  </div>
+	
+          <div id="experiment-article-section-7-content" 
+          class="content">
+	    <p>
+	      <center><img src="Diagram_Procedure.jpg" height = "1024" width = "768"></center>
+	    </p>
+	  </div>
+	
+        </section>
+			
+		
+        <section id="experiment-article-section-8">
+   
+          <div id="experiment-article-section-8-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/readings.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-8-heading" 
+          class="heading">
+            Further Readings
+          </div>
+
+          <div id="experiment-article-section-8-content" 
+          class="content">
+            <br/>
+<ol>
+<li>N.H.E. Weste, D. Harris, A. Banerjee, "CMOS VLSI Design", Pearson Education, Third Edition, 2007.</li>
+<li>N.H.E. Weste, Kamran Eshraghian , "Principles of CMOS VLSI Design" , ISBN-10: 0201533766 | ISBN-13: 978-0201533767 | Publication Date: October 1994 | Edition: 2</li>
+<li>Pucknell Douglas A., Eshraghian Kamran , "Basic VLSI Design",
+Edition: Third Edition,
+ISBN: 978-81-203-0986-9</li>
+<li>Efficient Shift Registers, LFSR
+Counters, and Long Pseudo-
+Random Sequence Generators , App Note by Peter Alfke (Xilinx), XAPP 052 July 7,1996 (Version 1.1)</li>
+</ol>
+<br/>
+          </div>
+
+        </section>
+
+      </div>
+
+
+    <!-- An article can have a sidebar that contain related 
+    links and additional material (however it is kept optional 
+    at this moment) -->
+    <aside id="lab-article-sidebar" class="default">
+      <!-- put the content that you want to appear in the 
+      sidebar -->	
+    </aside>
+
+
+    <!-- Article footer can display related content and 
+    additional links -->						
+    <footer id="lab-article-footer" class="default">
+      <!-- Put the content that you want to appear here -->
+    </footer>
+
+  </article>
+
+
+  <!-- Links to other labs, about us page can be kept the lab 
+  footer-->
+  <footer id="lab-footer" class="default">
+    <!-- Put the content here-->
+  </footer>
+
+</div>		
+
+</body>
+</html>

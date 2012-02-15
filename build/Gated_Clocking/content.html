@@ -1,0 +1,459 @@
+<!-- This file needs to be edited by the lab developer to suit
+the requirements of their lab in particular.-->
+
+<!-- Add class="default" to include any element as it is
+specified in default.html. 
+Do not include class="default" to the elements that you want to
+edit -->
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<div id="experiment"> <!-- The Experiment Document Container-->
+
+  <!-- The lab Header contains the logo and the name of the lab,
+  usually displayed on the top of the page-->
+
+  <header id="experiment-header" class="default">
+  
+    <div id="experiment-header-logo" class="logo">
+      <!-- Enclose the logo image of your lab or write it in 
+      text-->
+      <img src="../images/logo.jpg" />
+    </div>
+
+    <div id="experiment-header-heading" class="heading">
+      <!-- Write the name of your lab and link it to the home 
+      page of your lab (h1 tag is preferred while writing your 
+      lab name)-->
+      <a href="../index.html">Advanced VLSI Virtual Lab</a>	
+    </div>
+
+    <!-- Add any additional element you want to add to the lab 
+    header, For example : Help (Enclosing them with suitable 
+    div is recommended)-->
+
+  </header>
+
+
+  <!-- The lab article is the main content area where all the 
+  experiment content sits-->
+  <article id="experiment-article">
+  
+    <!-- The lab article has an header, optional navigational 
+    menu, number of sections, an optional sidebar and a closing 
+    footer-->
+     <div id="experiment-article-breadcrumb" class="breadcrumb">
+     </div>
+    
+      <header id="experiment-article-heading" class="heading">
+        <!-- You can add a welcome message or title of the 
+        experiment here -->
+        Power Reduction Using Gated Clocking
+        <!-- Add any additional element if required with proper 
+        enclosing-->
+      </header>
+
+      <!-- Navigation menu is useful to organize the view of 
+      multiple sections inside the article-->
+      <nav id="experiment-article-navigation" class="default">
+        <ul id="experiment-article-navigation-menu">
+          <!-- The menu can be dynamically generated to contain 
+          the headings of your sections or instead write the 
+          menu items of your choice individually enclosedu in 
+          <li> tag as shown below-->
+        </ul>
+      </nav>
+
+      <!-- All the sections of your lab or experiment can be 
+      enclosed together with a div element as shown below-->
+      <div id="experiment-article-sections">
+
+        <!-- First section of the article-->
+        <section id="experiment-article-section-1">
+          
+          <div id="experiment-article-section-1-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab -->
+	    <img src="../images/introduction.jpg" />
+	  </div>	
+          
+          <!-- The heading for the section can be enclosed in a 
+          div tag. -->
+          <div id="experiment-article-section-1-heading" 
+          class="heading">
+            Introduction
+          </div>
+
+          <!-- Write the section content inside a paragraph 
+          element, You can also include images with <img> tag -->
+          <div id="experiment-article-section-1-content" 
+          class="content">	
+           <h3>DEFINITION OF SYNCHRONOUS CIRCUIT</h3>
+<p>
+A <b>synchronous </b>circuit is a digital circuit in which the parts are synchronized by a clock signal.<br/>
+In an ideal synchronous circuit, every change in the logical levels of its storage components is simultaneous. These transitions follow the level change of a special signal called the clock. <br/><br/>Ideally, the input to each storage element has reached its final value before the next clock occurs, so the behaviour of the whole circuit can be predicted exactly.
+
+<br/>
+<br/>
+
+<h3>POWER DISSIPATION IN SYNCHRONOUS CIRCUIT</h3>
+<br/>
+<ul>
+<li>
+Synchronous circuits tend to draw a large amount of current right at the clock edge and shortly thereafter. <br/>The number of nodes switching (and hence, amount of current drawn) drops off rapidly after the clock edge, reaching zero just before the next clock edge,while in an asynchronous circuit, the switching times of the nodes are not correlated in this manner, so the current draw tends to be more uniform and less bursty.
+<br/>
+<br/>
+</li>
+<li>
+70% more power consumption compared to asynchronous design.
+<br/>
+<br/>
+</li>
+
+<li>
+Human need for low power devices is growing incase of Biomedical devices (pacemaker etc..)
+<br/>
+<br/>
+</li>
+
+<li>
+Need to find techniques which can result in power-saving in the synchronous circuit. 
+<br/>
+<br/>
+</li>
+</ul>
+
+<h3>SCHEMATIC OF SYNCHRONOUS CIRCUIT</h3><br/>
+</p>
+</div>
+<center>
+<img src="images/synchronous.png" /> 
+</center>
+<div id="experiment-article-section-1-content" 
+          class="content">
+<h3>POWER DISSIPATION IN CIRCUIT HAVING GATED CLOCKING</h3>
+
+<p>
+By the use of gated clocking the amout of average power consumed by the circuit is reduced considerably.</p>
+</div>
+
+
+      </section>
+
+      <!-- Second section of the article-->
+      <section id="experiment-article-section-2">
+        
+        <div id="experiment-article-section-2-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/theory.jpg" />
+	</div>
+				
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+        <div id="experiment-article-section-2-heading" 
+        class="heading">
+          Theory
+        </div>
+
+
+        <!-- Write the section content inside a paragraph 
+        element, we can also include images with <img> tag -->
+        <div id="experiment-article-section-2-content" 
+        class="content">
+          <h3>Description of how Clock Gating works</h3>
+<p>
+<b>CLOCK GATING</b> is one of the power-saving techniques used on many synchronous circuits.<br />
+To save power, clock gating technique adds more logic to a circuit to prune the clock tree,thus disabling portion of the circuitry so that its flip-flops do not change state : their switching power consumption goes to zero, and only leakage currents are incurred.<br/>
+<br/>
+Clock gating works by taking the enabled conditions attached to registers and uses them to gate the clocks. However a design must contain these enabled conditions in order for clock gating to occur.This clock gating process can save significant area as well as power, since it removes large numbers of muxes and replaces them with clock gating cells.This clock gating logic is generally in the form of "Integrated Clock Gating" (ICG) cells.However, note that the clock gating logic will change the clock tree structure, since the clock gating logic will sit on clock tree.
+
+<h3>Adding clock gating logic into design</h3><p>
+There are a number of ways in which clock gating logic can be added into a design.They are as follows.</p> <br /><br />
+<ol>
+<li>Coded into the RTL code as enable conditions that can be automatically translated into clock gating logic by synthesis tools(fine grain clock gating).</li>
+<li>Inserted into the design manually by the RTL designers(typically as module level clock gating) by instantiating library specific ICG(Integrated Clock Gating) cells to gate the clocks of specific modules or registers.</li>
+<li>Semi-automatically inserted into the RTL by automated clock gating tools.These tools either insert ICG cells into the RTL, or add enable conditions into the RTL code.These typically also offer sequential clock gating optimisations.</li>
+</ol><br /><p>
+Although asynchronous circuits by definition do not have a "clock", the term <b>perfect clock gating</b> is used to illustrate how various clock gating techniques are simply approximations of the data-dependent behavior exhibited by asynchronous circuitry.As the granularity on which you gate the clock of a synchronous circuit approaches zero, the power consumption of that circuit approaches that of an asynchronous circuit : the circuit only generates logic transitions when it is actively computing.</p>
+<br /><br />
+</p>
+
+</div>
+      </section>
+
+
+      <section id="experiment-article-section-3">
+        
+        <div id="experiment-article-section-3-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/objective.jpg" />
+	</div>
+     
+        <div id="experiment-article-section-3-heading" 
+        class="heading">
+          Objective
+        </div>
+
+        <div id="experiment-article-section-3-content" 
+        class="content">
+          <p>
+           <h3>
+To study power-delay optimization of Integrated circuits through architectural modification specifically by Clock Gating.
+</h3>
+<br/>
+<br/>
+<br/>
+          </p> 
+       
+       </div>
+
+      </section>
+
+
+      <section id="experiment-article-section-4">
+
+        <div id="experiment-article-section-4-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/simulation.jpg" />
+	</div>
+
+        <div id="experiment-article-section-4-heading" 
+        class="heading">
+          Experiment
+        </div>
+
+        <div id="experiment-article-section-4-content" 
+        class="content">
+          <p>
+	        <center>
+<font size="4"> 
+<a href="./exp1/exp1.html" target="_blank">Experiment</a>
+</font>
+	        
+            
+          </p>
+        </div>
+
+      </section>
+
+      <section id="experiment-article-section-5">
+   
+        <div id="experiment-article-section-5-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/manual.jpg" />
+	</div>
+
+        <div id="experiment-article-section-5-heading" 
+        class="heading">
+          Manual
+        </div>
+
+        <div id="experiment-article-section-5-content" 
+        class="content">
+          <center><a href="exp1_manual.swf">Click Here For Experiment Manual</a></center>
+          </div>
+
+        </section>
+
+        <section id="experiment-article-section-6">
+      
+          <div id="experiment-article-section-6-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/quizzes.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-6-heading" 
+          class="heading">
+            Quizzes
+          </div>
+
+          
+              <br/>
+
+
+
+<center><a href="#post"><img src="post_quiz.jpg"/></a></center><br/>
+<center><a href="#pre"><img src="pre_quiz.jpg"/></a></center><br/><br/><hr/><hr/><br/><br/>
+<div id="experiment-article-section-6-content" 
+          class="content">
+            
+            <p>
+<a name="pre"><b>PRE_QUIZ</b></a><hr/><br/>
+<font size="3">
+</font><ul>
+<font size="3"><li> 
+How can we measure the power-dissipation of a circuit?
+</li>
+<li>
+What are the approaches to minimize power-dissipation?
+</li>
+<li>
+What is meant by average power?
+</li>
+<li>
+What is meant by instantaneous power?
+</li></font></ul><p>
+<font size="3"><a name="post"><b>POST_QUIZ</b></a></font></p><hr/><font size="3"><br/>
+</font><form name="quiz">
+<ol>
+<font size="3"><li><b>A T Flip-Flop has got how many inputs?</b><br/>
+   <input type="radio" value="wrong" name="q1"/>4<br/><br/>
+   <input type="radio" value="wrong" name="q1"/>3<br/><br/>
+   <span id="correct1"><input type="radio" value="correct" name="q1"/>2</span><br/><br/>
+   <input type="radio" value="wrong" name="q1"/>1<br/><br/><br/>
+</li>
+</font><hr/>
+
+<font size="3"><li><b>Power dissipation in circuit has been minimised by:</b><br/>
+   <span id="correct2"><input type="radio" value="correct" name="q2"/>Gated Clocking.</span><br/><br/>
+   <input type="radio" value="wrong" name="q2"/>Parallel Processing.<br/><br/>
+   <input type="radio" value="wrong" name="q2"/>Multi-threaded CMOS logic.<br/><br/>
+   <input type="radio" value="wrong" name="q2"/>Pipe lining.<br/><br/><br/>
+</li>
+</font><hr/>
+
+<font size="3"><li><b>If the rise time and fall time of the clock increases then the average power dissipation of the circuit:</b><br/>
+   <input type="radio" value="wrong" name="q3"/>Decreases.<br/><br/>
+   <input type="radio" value="wrong" name="q3"/>Remains the same.<br/><br/>
+   <input type="radio" value="wrong" name="q3"/>Depends upon the design of the circuit.<br/><br/>
+   <span id="correct3"><input type="radio" value="correct" name="q3"/>Increases.</span><br/><br/><br/>
+</li>
+</font><hr/>
+
+<font size="3"><li><b>Gated clocks can be:</b><br/>
+   <input type="radio" value="wrong" name="q4"/>Connected in cascode.<br/><br/>
+   <span id="correct4"><input type="radio" value="correct" name="q4"/>Cascaded.</span><br/><br/>
+   <input type="radio" value="wrong" name="q4"/>Cannot be cascaded.<br/><br/>
+   <input type="radio" value="wrong" name="q4"/>None of these.<br/><br/><br/>
+</li>
+</font><hr/>
+
+
+<!--
+<font size="3"><li><b>Gated clocks can be:</b><br/>
+   <input type="radio" value="wrong" name="q4"/>Connected in cascode.<br/><br/>
+   <span id="correct4"><input type="radio" value="correct" name="q4"/>Cascaded.<br/><br/>
+   <input type="radio" value="wrong" name="q4"/>Cannot be cascaded.<br/><br/>
+   <input type="radio" value="wrong" name="q4"/>None of these.<br/><br/><br/>
+</li>
+</font><hr/>
+-->
+
+<font size="3"><li><b>If the maximum power dissipation of the circuit increases,then :</b><br/>
+   <input type="radio" value="wrong" name="q5"/>Remains the same.<br/><br/>
+   <input type="radio" value="wrong" name="q5"/>The reliability of the circuit is not effected.<br /><br/>
+   <input type="radio" value="wrong" name="q5"/>It necessarily implies that the average power will increase.<br/><br/>
+   <span id="correct5"><input type="radio" value="correct" name="q5"/>Doesn't necessarily imply that the average power will increase.</span><br/><br/><br/>
+</li>
+</font><hr/>
+
+
+<!--<li><b>What is desirable <sup>&#946;<sub>n</sub></sup>/<sub>&#946;<sub>p</sub></sub> ratio for an inverter?</b><br>
+   <input type="radio" name="q10" value="wrong">0<br>
+   <span id="correct10"><input type="radio" name="q10" value="correct">1</span><br>
+   <input type="radio" name="q10" value="wrong">0.5<br>
+   <input type="radio" name="q10" value="wrong">&#8734;<br><br>
+</li>
+<hr>-->
+
+</ol>
+<p>
+<font size="3"><input type="button" value="check quiz" onclick="checkQuiz()"/>
+</font></p><hr/>
+<p>
+<textarea name="output" rows="10" cols="80"></textarea></p>
+</form>
+            </p>
+
+          </div>
+
+        </section>
+
+        <section id="experiment-article-section-7">
+	  
+          <div id="experiment-article-section-7-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab. -->
+	    <img src="../images/procedure.jpg" />
+	  </div>
+	
+          <div id="experiment-article-section-7-heading" 
+          class="heading">
+	    Procedure
+	  </div>
+	
+          
+	    <p>
+	     <center> <img src="nand_procedure.jpg"></center>
+	    </p>
+	  
+	
+        </section>
+			
+		
+        <section id="experiment-article-section-8">
+   
+          <div id="experiment-article-section-8-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/readings.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-8-heading" 
+          class="heading">
+            Further Readings
+          </div>
+
+          <div id="experiment-article-section-8-content" 
+          class="content">
+            <br/>
+<ul>
+<li>Kaushik Roy, Sharat Prasad, Jean Claude Ed Roy , "Low-Power CMOS VLSI Circuit Design",Wiley-Interscience,ISBN : 047111488X</li>
+<li>J.M. Rabaey, A.Chandrakasan, B. Nikolic, "Digital Integrated Circuits: A Design Perspective", Prentice Hall of India, Third Edition, 2008.</li>
+<li>Magdy A. Bayoumi, Earl E. Swartzlander , "VLSI signal processing technology",ISBN-10: 0792394909 | ISBN-13: 978-0792394907 | Publication Date: October 31, 1994 | Edition: 1</li>
+</ul>
+<br/>
+          </div>
+
+        </section>
+
+      </div>
+
+
+    <!-- An article can have a sidebar that contain related 
+    links and additional material (however it is kept optional 
+    at this moment) -->
+    <aside id="lab-article-sidebar" class="default">
+      <!-- put the content that you want to appear in the 
+      sidebar -->	
+    </aside>
+
+
+    <!-- Article footer can display related content and 
+    additional links -->						
+    <footer id="lab-article-footer" class="default">
+      <!-- Put the content that you want to appear here -->
+    </footer>
+
+  </article>
+
+
+  <!-- Links to other labs, about us page can be kept the lab 
+  footer-->
+ <footer id="lab-footer" class="footer">
+   <!-- Put the content here-->
+<a href="http://virtual-labs.ac.in/nmeict" >Sponsored by MHRD (NME-ICT) </a> | <a href="http://virtual-labs.ac.in/licensing" target="_blank"> Licensing Terms </a>
+</footer>
+
+</div>		
+
+</body>
+</html>

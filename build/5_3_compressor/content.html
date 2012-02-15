@@ -1,0 +1,455 @@
+<!-- This file needs to be edited by the lab developer to suit
+the requirements of their lab in particular.-->
+
+<!-- Add class="default" to include any element as it is
+specified in default.html. 
+Do not include class="default" to the elements that you want to
+edit -->
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<div id="experiment"> <!-- The Experiment Document Container-->
+
+  <!-- The lab Header contains the logo and the name of the lab,
+  usually displayed on the top of the page-->
+
+  <header id="experiment-header" class="default">
+  
+    <div id="experiment-header-logo" class="logo">
+      <!-- Enclose the logo image of your lab or write it in 
+      text-->
+      <img src="../images/logo.jpg" />
+    </div>
+
+    <div id="experiment-header-heading" class="heading">
+      <!-- Write the name of your lab and link it to the home 
+      page of your lab (h1 tag is preferred while writing your 
+      lab name)-->
+      <a href="../index.html">Advanced VLSI Virtual Lab</a>	
+    </div>
+
+    <!-- Add any additional element you want to add to the lab 
+    header, For example : Help (Enclosing them with suitable 
+    div is recommended)-->
+
+  </header>
+
+
+  <!-- The lab article is the main content area where all the 
+  experiment content sits-->
+  <article id="experiment-article">
+  
+    <!-- The lab article has an header, optional navigational 
+    menu, number of sections, an optional sidebar and a closing 
+    footer-->
+     <div id="experiment-article-breadcrumb" class="breadcrumb">
+     </div>
+    
+      <header id="experiment-article-heading" class="heading">
+        <!-- You can add a welcome message or title of the 
+        experiment here -->
+         5-3 COMPRESSOR
+        <!-- Add any additional element if required with proper 
+        enclosing-->
+      </header>
+
+      <!-- Navigation menu is useful to organize the view of 
+      multiple sections inside the article-->
+      <nav id="experiment-article-navigation" class="default">
+        <ul id="experiment-article-navigation-menu">
+          <!-- The menu can be dynamically generated to contain 
+          the headings of your sections or instead write the 
+          menu items of your choice individually enclosedu in 
+          <li> tag as shown below-->
+        </ul>
+      </nav>
+
+      <!-- All the sections of your lab or experiment can be 
+      enclosed together with a div element as shown below-->
+      <div id="experiment-article-sections">
+
+        <!-- First section of the article-->
+        <section id="experiment-article-section-1">
+          
+          <div id="experiment-article-section-1-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab -->
+	    <img src="../images/introduction.jpg" />
+	  </div>	
+          
+          <!-- The heading for the section can be enclosed in a 
+          div tag. -->
+          <div id="experiment-article-section-1-heading" 
+          class="heading">
+            Introduction
+          </div>
+
+          <!-- Write the section content inside a paragraph 
+          element, You can also include images with <img> tag -->
+          <div id="experiment-article-section-1-content" 
+          class="content">	
+           <h3>ARCHITECTURE OF A 5-3 COMPRESSOR</h3>
+<p>
+A <b>5-3 compressor </b>essentially comprises of a combinational logic circuit with five inputs and three outputs. It accepts a five bit input string as input, and produces its sum as output. Obviously, the maximum output of a 5-3 compressor can be 101, when all its input bits are at logic 1. The conventional architecture of a 5-3 compressor is based on the extended design of a conventional 4-2 compressor[2,3,4]. The architecture of a conventional 5-3 compressor is shown in figure 1. 
+<br/>
+<br/>
+</p>
+</div>
+      
+<center><img src="Image1.jpg"></center>
+<br/>
+    <div id="experiment-article-section-1-content" 
+          class="content">	
+<p>
+As evident from the figure 1, the straightforward implementation of the 5-3 compressor entails for 5 gate delays. Moreover the least significant bit of the output requires 4 gate delays (delay imposed by four XOR gates). As a result, there can be a problem of synchronization of the output bits when the input bits change leading to static hazards. 
+
+<br/>
+<br/>
+The straightforward implementation of the 5-3 compressor requires the use 5 XOR gates, 5 AND gates and 2 OR gates. However, the proposed 5-3 compressor requires the use of 5 XOR gates, 2 AND gates and 2 multiplexers. Since multiplexers can be implemented with only two transistors using pass transistor logic, therefore the proposed 5-3 compressor uses much hardware resources than the conventional 5-3 compressor. 
+<br/>
+</p>
+
+       </div>
+
+
+      </section>
+
+      <!-- Second section of the article-->
+      <section id="experiment-article-section-2">
+        
+        <div id="experiment-article-section-2-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/theory.jpg" />
+	</div>
+				
+        <!-- The heading for the section can be enclosed in a 
+        div tag. -->
+        <div id="experiment-article-section-2-heading" 
+        class="heading">
+          Theory
+        </div>
+
+
+        <!-- Write the section content inside a paragraph 
+        element, we can also include images with <img> tag -->
+        <div id="experiment-article-section-2-content" 
+        class="content">
+          <h3>Output Formula</h3>
+<p>
+The current work proposes a novel architecture of a 5-3 compressor that can produce output with only three gate delays. The architecture of the compressor has been obtained by suitably rewriting the Boolean equations of a 5-3 compressor as:
+<br/>
+</p>
+</div>
+<center><img src="Image4.jpg"></center>
+<br/>
+<center><img src="Image2.jpg"></center>
+<br/>
+  <div id="experiment-article-section-2-content" 
+        class="content">
+      <p>
+Using equations (1), (2) and (3), we propose to design a multiplexer based architecture of a 5-3 compressor as shown in figure 2.
+<br/>
+
+From figure 2, it is evident that the output of the compressor requires 3 gate delays. It is therefore obvious that the proposed 5-3 compressor computes the compressed output with a much lesser delay than the conventional 5-3 compressor.
+
+</p>
+<br />
+<h3>Power and Delay in circuit</h3>
+<p>
+ The power and delay of the proposed 5-3 compressor has been compared with that of the standard 5-3 compressor found in literature. Table I shows the comparative study of power and delay of the proposed 5-3 compressor and the standard 5-3 compressor found in literature.
+A comparative study of the simulation results presented in table 1 indicates that the proposed 5-3 compressor is more efficient in terms of power, delay and power-delay product than its peer design. 
+<br/>
+</p>
+</div>
+
+<center><img src="Image3.jpg"></center>
+<br/>
+
+     </section>
+
+
+      <section id="experiment-article-section-3">
+        
+        <div id="experiment-article-section-3-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab. -->
+	  <img src="../images/objective.jpg" />
+	</div>
+     
+        <div id="experiment-article-section-3-heading" 
+        class="heading">
+          Objective
+        </div>
+
+        <div id="experiment-article-section-3-content" 
+        class="content">
+          <p>
+           To design and simulate a 5-3 compressor circuit.
+          </p> 
+       
+       </div>
+
+      </section>
+
+
+      <section id="experiment-article-section-4">
+
+        <div id="experiment-article-section-4-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/simulation.jpg" />
+	</div>
+
+        <div id="experiment-article-section-4-heading" 
+        class="heading">
+          Experiment
+        </div>
+
+        <div id="experiment-article-section-4-content" 
+        class="content">
+          <p>
+	        <center>
+<font size="4"> 
+<a href="./exp1/exp1.html" target="_blank">Experiment</a>
+</font> </p>
+<br/><br/>
+</center>
+	        
+            
+          </p>
+        </div>
+
+      </section>
+
+      <section id="experiment-article-section-5">
+   
+        <div id="experiment-article-section-5-icon" 
+        class="icon">
+	  <!-- Enclose the icon image of your lab.-->
+	  <img src="../images/manual.jpg" />
+	</div>
+
+        <div id="experiment-article-section-5-heading" 
+        class="heading">
+          Manual
+        </div>
+
+        <div id="experiment-article-section-5-content" 
+        class="content">
+         <center> <a href="exp_manual.swf">Click Here For Experiment Manual</a></center>
+<br/>
+<br/>
+<br/>
+          </div>
+
+        </section>
+
+        <section id="experiment-article-section-6">
+      
+          <div id="experiment-article-section-6-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/quizzes.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-6-heading" 
+          class="heading">
+            Quizzes
+          </div>
+
+          
+              <br/>
+<center><a href="#post"><img src="post_quiz.jpg"/></a></center><br/>
+<center><a href="#pre"><img src="pre_quiz.jpg"/></a></center><br/><br/><hr/><hr/><br/><br/>
+<div id="experiment-article-section-6-content" 
+          class="content">
+            
+            <p>
+<a name="pre"><b>PRE_QUIZ</b></a><hr/><br/>
+<font size="3">
+</font><ul>
+<font size="3"><li> 
+What are the different steps in multiplication of two numbers?
+</li>
+<li>
+What are the different ways by which we can speed up the multiplication process?
+</li>
+<li>
+How is a compressor different from an adder?
+</li>
+<li>
+What is the simplest possible compressor?
+</li>
+<li>
+Can a compressor be called a 1's counter?
+</li></font></ul><br/><br/><br/><br/>
+<p>
+<font size="3"><a name="post"><b>POST_QUIZ</b></a></font></p><hr/><font size="3"><br/>
+</font><form name="quiz">
+<ol>
+<font size="3"><li><b>A Compressor is a circuit that:</b><br/>
+   <span id="correct1"><input type="radio" value="correct" name="q1"/>Conveys the same info in lesser number of bits.</span><br/>
+   <input type="radio" value="wrong" name="q1"/>Conveys the same info in greater number of bits.<br/>
+   <input type="radio" value="wrong" name="q1"/>Adds the bits.<br/>
+   <input type="radio" value="wrong" name="q1"/>None of these.<br/><br/><br/>
+</li>
+</font><hr/>
+
+<font size="3"><li><b>Compressors are popularly used in:</b><br/>
+   <input type="radio" value="wrong" name="q2"/>Substractors.<br/>
+   <input type="radio" value="wrong" name="q2"/>Adders.<br/>
+   <span id="correct2"><input type="radio" value="correct" name="q2"/>Multipliers.</span><br/>
+   <input type="radio" value="wrong" name="q2"/>None of these.<br/><br/><br/>
+</li>
+</font><hr/>
+
+<font size="3"><li><b>A 5-3 compressor has:</b><br/>
+   <span id="correct3"><input type="radio" value="correct" name="q3"/>5 Inputs.</span><br/>
+   <input type="radio" value="wrong" name="q3"/>3 Inputs.<br/>
+   <input type="radio" value="wrong" name="q3"/>8 Inputs.<br/>
+   <input type="radio" value="wrong" name="q3"/>None of these.<br/><br/>
+</li>
+</font><hr/>
+
+<font size="3"><li><b>For a XOR based 5-3 compressor the signal propagates through:</b><br/>
+   <span id="correct4"><input type="radio" value="correct" name="q4"/>3 stages.</span><br/>
+   <input type="radio" value="wrong" name="q4"/>4 stages.<br/>
+   <input type="radio" value="wrong" name="q4"/>5 stages.<br/>
+   <input type="radio" value="wrong" name="q4"/>6 stages.<br/><br/><br/>
+</li>
+</font><hr/>
+
+
+<!--
+<font size="3"><li><b>Gated clocks can be:</b><br/>
+   <input type="radio" value="wrong" name="q4"/>Connected in cascode.<br/><br/>
+   <span id="correct4"><input type="radio" value="correct" name="q4"/>Cascaded.<br/><br/>
+   <input type="radio" value="wrong" name="q4"/>Cannot be cascaded.<br/><br/>
+   <input type="radio" value="wrong" name="q4"/>None of these.<br/><br/><br/>
+</li>
+</font><hr/>
+-->
+
+<font size="3"><li><b>The main advantage of XOR based 5-3 compressor over conventional 5-3 compressor is :</b><br/>
+   <input type="radio" value="wrong" name="q5"/>Reduction in area.<br/>
+   <input type="radio" value="wrong" name="q5"/>Reduction in power dissipation.<br />
+   <span id="correct5"><input type="radio" value="correct" name="q5"/>Reduction in delay.</span><br/>
+   <input type="radio" value="wrong" name="q5"/>None of these.<br/><br/><br/>
+</li>
+</font><hr/>
+
+
+<!--<li><b>What is desirable <sup>&#946;<sub>n</sub></sup>/<sub>&#946;<sub>p</sub></sub> ratio for an inverter?</b><br>
+   <input type="radio" name="q10" value="wrong">0<br>
+   <span id="correct10"><input type="radio" name="q10" value="correct">1</span><br>
+   <input type="radio" name="q10" value="wrong">0.5<br>
+   <input type="radio" name="q10" value="wrong">&#8734;<br><br>
+</li>
+<hr>-->
+
+</ol>
+<p>
+<font size="3"><input type="button" value="check quiz" onclick="checkQuiz()"/>
+</font></p><hr/>
+<p>
+<textarea name="output" rows="10" cols="80"></textarea></p>
+</form>
+
+
+
+
+    </p>
+
+          </div>
+
+        </section>
+
+        <section id="experiment-article-section-7">
+	  
+          <div id="experiment-article-section-7-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab. -->
+	    <img src="../images/procedure.jpg" />
+	  </div>
+	
+          <div id="experiment-article-section-7-heading" 
+          class="heading">
+	    Procedure
+	  </div>
+	
+	    <p>
+	      <center><img src="nand_procedure1.jpg" height = "1024" width = "768"></center>
+	    </p>
+	
+        </section>
+			
+		
+        <section id="experiment-article-section-8">
+   
+          <div id="experiment-article-section-8-icon" 
+          class="icon">
+	    <!-- Enclose the icon image of your lab.-->
+	    <img src="../images/readings.jpg" />
+	  </div>
+
+          <div id="experiment-article-section-8-heading" 
+          class="heading">
+            Further Readings
+          </div>
+
+          <div id="experiment-article-section-8-content" 
+          class="content">
+<ol>
+<li>N.H.E. Weste, D. Harris, A. Banerjee, "CMOS VLSI Design", Pearson Education, Third Edition, 2007.</li>
+<li>Y. Leblebici, S.M. Kang, "CMOS Digital Integrated Circuits: Analysis and Design", McGraw Hill, International Edition, 2008.</li>
+<li>J.M. Rabaey, A.Chandrakasan, B. Nikolic, "Digital Integrated Circuits: A Design Perspective", Prentice Hall of India, Third Edition, 2008.</li>
+<li>Chowdhury, S.R.; Banerjee, A.; Roy, A.; Hiranmay Saha, H.; , "Design, Simulation and Testing of a High Speed Low Power 15-4 Compressor for High Speed Multiplication Applications," Emerging Trends in Engineering and Technology, 2008. ICETET '08. First International Conference on , vol., no., pp.434-438, 16-18 July 2008
+doi: 10.1109/ICETET.2008.151</li>
+<li>V.G. Oklobdzija, D. Villeger, S.S. Liu (1996), "A method for speed optimized partial product reduction and generation of fast parallel multipliers using an algorithmic approach", IEEE Transactions on Computers, Vol. 45, No. 3.
+</li>
+<li>P. Stelling, C. Martel, V.G. Oklobdzija, R. Ravi (1998), "Optimal circuit for parallel multipliers", IEEE Transactions on Computers, Vol. 47, No. 3.
+</li>
+<li>V.G. Oklobdzija (2000), "High speed VLSI arithmetic unit: Adders and Multipliers", in Design of High Performance Microprocessor Circuits", Editor A. Chandrakasan, IEEE Press.
+</li>
+</ol>
+<br/>
+          </div>
+
+        </section>
+
+      </div>
+
+
+    <!-- An article can have a sidebar that contain related 
+    links and additional material (however it is kept optional 
+    at this moment) -->
+    <aside id="lab-article-sidebar" class="default">
+      <!-- put the content that you want to appear in the 
+      sidebar -->	
+    </aside>
+
+
+    <!-- Article footer can display related content and 
+    additional links -->						
+    <footer id="lab-article-footer" class="default">
+      <!-- Put the content that you want to appear here -->
+    </footer>
+
+  </article>
+
+
+  <!-- Links to other labs, about us page can be kept the lab 
+  footer-->
+  <footer id="lab-footer" class="footer">
+   <!-- Put the content here-->
+<a href="http://virtual-labs.ac.in/nmeict" >Sponsored by MHRD (NME-ICT) </a> | <a href="http://virtual-labs.ac.in/licensing" target="_blank"> Licensing Terms </a>
+</footer>
+
+</div>		
+
+</body>
+</html>

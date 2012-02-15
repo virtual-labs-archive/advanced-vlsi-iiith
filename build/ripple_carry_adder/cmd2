@@ -1,0 +1,2 @@
+mencoder \videos\soph1.wmv -o soph4.flv -of lavf -oac mp3lame -lameopts abr:br=56
+  -ovc lavc -lavcopts vcodec=flv:vbitrate=500:mbd=2:mv0:trell:v4mv:cbp:last_pred=3 -srate 22050
