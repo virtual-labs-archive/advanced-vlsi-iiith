@@ -1,0 +1,227 @@
+public class FormattedTextFieldDemo extends JPanel implements PropertyChangeListener
+		{
+
+			//Labels to identify the fields
+			private JLabel x_0,x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9,x_10,x_11,x_12,x_13,x_14,x_15,x_16,x_17,x_18,x_19,sig_1,sig_2;
+
+			//Strings for the labels
+			private String sig1= "Input Data - 8 bits (MSB->LSB)";
+			private String sig2= "12 bit Code Word (MSB->LSB)";
+			private String x0="",x1="",x2="",x3="",x4="",x5="",x6="",x7="",x8="",x9="",x10="",x11="",x12="",x13="",x14="",x15="",x16="",x17="",x18="",x19="";
+
+			//Fields for data entry
+			private JFormattedTextField x0f,x1f,x2f,x3f,x4f,x5f,x6f,x7f,x8f,x9f,x10f,x11f,x12f,x13f,x14f,x15f,x16f,x17f,x18f,x19f,sig1f,sig2f;
+			
+			//Values for the fields
+			private int x0c,x1c,x2c,x3c,x4c,x5c,x6c,x7c,x8c,x9c,x10c,x11c,x12c,x13c,x14c,x15c,x16c,x17c,x18c=0,x19c=0;
+
+			public FormattedTextFieldDemo() {
+				super(new BorderLayout());
+
+				//Create the labels.
+				x_0 = new JLabel(x0);
+				x_1 = new JLabel(x1);
+				x_2 = new JLabel(x2);
+				x_3 = new JLabel(x3);
+				x_4 = new JLabel(x4);
+				x_5 = new JLabel(x5);
+				x_6 = new JLabel(x6);
+				x_7 = new JLabel(x7);
+				x_8 = new JLabel(x8);
+				x_9 = new JLabel(x9);
+				x_10 = new JLabel(x10);
+				x_11 = new JLabel(x11);
+				x_12 = new JLabel(x12);
+				x_13 = new JLabel(x13);
+				x_14 = new JLabel(x14);
+				x_15 = new JLabel(x15);
+				x_16 = new JLabel(x16);
+				x_17 = new JLabel(x17);
+				x_18 = new JLabel(x18);
+				x_19 = new JLabel(x19);
+				sig_1 = new JLabel(sig1);
+				sig_2 = new JLabel(sig2);
+
+				//Create the text fields and set them up
+				
+				 try{
+                                        x0f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x0f.setValue(new Integer(0));
+                                        x0f.setColumns(1);
+                                        x0f.addPropertyChangeListener("value", this);
+                                        
+					x1f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x1f.setValue(new Integer(0));
+                                        x1f.setColumns(1);
+                                        x1f.addPropertyChangeListener("value", this);
+                                        
+					x2f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x2f.setValue(new Integer(0));
+                                        x2f.setColumns(1);
+                                        x2f.addPropertyChangeListener("value", this);
+                                        
+					x3f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x3f.setValue(new Integer(0));
+                                        x3f.setColumns(1);
+                                        x3f.addPropertyChangeListener("value", this);
+                                        
+					x4f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x4f.setValue(new Integer(0));
+                                        x4f.setColumns(1);
+                                        x4f.addPropertyChangeListener("value", this);
+                                        
+					x5f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x5f.setValue(new Integer(0));
+                                        x5f.setColumns(1);
+                                        x5f.addPropertyChangeListener("value", this);
+                                        
+					x6f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x6f.setValue(new Integer(0));
+                                        x6f.setColumns(1);
+                                        x6f.addPropertyChangeListener("value", this);
+
+					x7f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x7f.setValue(new Integer(0));
+                                        x7f.setColumns(1);
+                                        x7f.addPropertyChangeListener("value", this);
+
+					x8f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x8f.setValue(new Integer(0));
+                                        x8f.setColumns(1);
+                                        x8f.addPropertyChangeListener("value", this);
+					x8f.setEditable(false);
+					x8f.setForeground(Color.red);
+
+					x9f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x9f.setValue(new Integer(0));
+                                        x9f.setColumns(1);
+                                        x9f.addPropertyChangeListener("value", this);
+					x9f.setEditable(false);
+					x9f.setForeground(Color.red);
+
+					x10f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x10f.setValue(new Integer(0));
+                                        x10f.setColumns(1);
+                                        x10f.addPropertyChangeListener("value", this);
+					x10f.setEditable(false);
+					x10f.setForeground(Color.red);
+
+					x11f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x11f.setValue(new Integer(0));
+                                        x11f.setColumns(1);
+                                        x11f.addPropertyChangeListener("value", this);
+					x11f.setEditable(false);
+					x11f.setForeground(Color.red);
+
+					x12f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x12f.setValue(new Integer(0));
+                                        x12f.setColumns(1);
+                                        x12f.addPropertyChangeListener("value", this);
+					x12f.setEditable(false);
+					x12f.setForeground(Color.red);
+
+					x13f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x13f.setValue(new Integer(0));
+                                        x13f.setColumns(1);
+                                        x13f.addPropertyChangeListener("value", this);
+					x13f.setEditable(false);
+					x13f.setForeground(Color.red);
+
+					x14f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x14f.setValue(new Integer(0));
+                                        x14f.setColumns(1);
+                                        x14f.addPropertyChangeListener("value", this);
+					x14f.setEditable(false);
+					x14f.setForeground(Color.red);
+
+					x15f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x15f.setValue(new Integer(0));
+                                        x15f.setColumns(1);
+                                        x15f.addPropertyChangeListener("value", this);
+					x15f.setEditable(false);
+					x15f.setForeground(Color.red);
+
+					x16f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x16f.setValue(new Integer(0));
+                                        x16f.setColumns(1);
+                                        x16f.addPropertyChangeListener("value", this);
+					x16f.setEditable(false);
+					x16f.setForeground(Color.red);
+
+					x17f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x17f.setValue(new Integer(0));
+                                        x17f.setColumns(1);
+                                        x17f.addPropertyChangeListener("value", this);
+					x17f.setEditable(false);
+					x17f.setForeground(Color.red);
+
+					x18f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x18f.setValue(new Integer(0));
+                                        x18f.setColumns(1);
+                                        x18f.addPropertyChangeListener("value", this);
+					x18f.setEditable(false);
+					x18f.setForeground(Color.red);
+
+					x19f = new JFormattedTextField(new MaskFormatter("*"));
+                                        x19f.setValue(new Integer(0));
+                                        x19f.setColumns(1);
+                                        x19f.addPropertyChangeListener("value", this);
+					x19f.setEditable(false);
+					x19f.setForeground(Color.red);
+				}
+				catch (Exception e){
+				}
+
+				//Tell accessibility tools about label/textfield pairs.
+				x_0.setLabelFor(x0f);
+				x_1.setLabelFor(x1f);
+				x_2.setLabelFor(x2f);
+				x_3.setLabelFor(x3f);
+				x_4.setLabelFor(x4f);
+				x_5.setLabelFor(x5f);
+				x_6.setLabelFor(x6f);
+				x_7.setLabelFor(x7f);
+				x_8.setLabelFor(x8f);
+				x_9.setLabelFor(x9f);
+				x_10.setLabelFor(x10f);
+				x_11.setLabelFor(x11f);
+				x_12.setLabelFor(x12f);
+				x_13.setLabelFor(x13f);
+				x_14.setLabelFor(x14f);
+				x_15.setLabelFor(x15f);
+				x_16.setLabelFor(x16f);
+				x_17.setLabelFor(x17f);
+				x_18.setLabelFor(x18f);
+				x_19.setLabelFor(x19f);
+				
+				//sig_1.setLabelFor(sig1f);
+				//sig_2.setLabelFor(sig2f);
+
+				//Lay out the labels in a panel.
+				JPanel labelPane = new JPanel(new GridLayout(1,5));
+				labelPane.add(sig_1);
+				labelPane.add(x_7); 
+				labelPane.add(x7f); 
+				labelPane.add(x_6); 
+				labelPane.add(x6f); 
+
+
+//				labelPane.add(rateLabel);
+//				labelPane.add(numPeriodsLabel);
+
+				//Layout the text fields in a panel.
+				JPanel fieldPane = new JPanel(new GridLayout(1,3));
+				fieldPane.add(sig_2);
+				fieldPane.add(x_19); 
+				fieldPane.add(x19f); 
+//				fieldPane.add(amountField);
+				
+
+				//Put the panels in this panel, labels on left,
+				//text fields on right.
+				setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+				add(labelPane, BorderLayout.NORTH);
+				add(fieldPane, BorderLayout.SOUTH);
+			}
+		}
+		
