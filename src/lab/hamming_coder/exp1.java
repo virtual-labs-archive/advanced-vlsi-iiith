@@ -1,6 +1,31 @@
+//import java.applet.Applet;
+//import java.util.*;
+//import java.util.PropertyPermission.*;
+import java.awt.*;
+//import java.awt.Color.*;
+//import java.awt.MediaTracker.*;
+import java.awt.event.*;
+//import java.text.*;
+//import java.awt.datatransfer.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.net.*;
+//import java.net.URLEncoder.*;
+import java.io.*;
+//import java.io.File.*;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.text.*;
+//import javax.swing.tree.*;
+//import javax.swing.table.*;
+//import javax.swing.ImageIcon.*;
+
+
+/*
 import java.applet.Applet;
 import java.util.*;
-import java.util.PropertyPermission.*;
+//import java.util.PropertyPermission.*;
 import java.awt.*;
 import java.awt.Color.*;
 import java.awt.MediaTracker.*;
@@ -32,7 +57,7 @@ import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.SwingUtilities;
-
+*/
 
 public class exp1 extends JApplet
 {
@@ -49,9 +74,711 @@ public class exp1 extends JApplet
 				public void run() {
 				//Turn off metal's use of bold fonts
 				UIManager.put("swing.boldMetal", Boolean.FALSE);
-				createAndShowGUI();
-				}
+				Panel myPane1 = new Panel();
+				setSize( 1400, 650 );
+				setContentPane(myPane1);
+				JButton manButton = new JButton("MANUAL CIRCUIT");
+				JButton autoButton = new JButton("VERILOG CODING");
+				JPanel labelPane = new JPanel(new GridLayout(1,1));
+				//		JPanel headButton = new JPanel (new FlowLayout(FlowLayout.CENTER , 50 , 5 )) ;
+						add(labelPane, BorderLayout.CENTER);
+						labelPane.add(manButton);
+						labelPane.add(autoButton);
+						
+				manButton.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent se){
+						createAndShowGUI();							
+						}
 				});
+				
+				autoButton.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent se){
+						verilogEditor();
+						}
+				});
+			}
+		});
+	}
+	public void verilogEditor() {
+		JPanel cp = new JPanel();
+		add(cp, BorderLayout.CENTER);
+		JLabel head = new JLabel ( "<html><FONT COLOR=black SIZE=7 ><B>VERILOG DESIGN CODE EDITOR</B></FONT><br><br></html>", JLabel.CENTER);
+		 head.setBorder(BorderFactory.createRaisedBevelBorder( ));
+		 cp.add(head,BorderLayout.CENTER);
+		final JTextArea t = new JTextArea(35,120);	
+		 Border brd = BorderFactory.createMatteBorder(1, 1, 2, 2, Color.BLACK);
+		 t.setBorder(brd);
+		 head.setBorder(brd);
+		 cp.add(t);
+		 JScrollPane scrollPane = new JScrollPane(t);
+		 cp.add(scrollPane, BorderLayout.CENTER);
+		 JButton s= new JButton("NEXT");
+		 cp.add(s);
+		 setSize(1400,650);
+		 setContentPane(cp);
+		 s.addActionListener(new ActionListener(){
+			 public void actionPerformed(ActionEvent as){
+				 try	{
+					 String str = t.getText(); 
+					 if(str.length()==0) {
+			            JOptionPane.showMessageDialog(null, "File is empty", "ERROR MESSAGE", 1);
+					//	verilogTestBenchEditor();
+					 }
+					 else{
+	
+						File f = new File("lfsr.v");
+						FileWriter fw = new FileWriter(f);
+						fw.write(str);
+						fw.close();
+						JOptionPane.showMessageDialog(null, "VERILOG File is saved", "MESSAGE", 1);
+					//	verilogTestBenchEditor();
+						File fr = new File("lfsr.v");
+						BufferedReader freader = new BufferedReader(new FileReader(fr));
+						String s;
+						int flag=0,flag1=0,flagc=0,flag2=0;
+						
+						String[] deg=null;
+						while ((s = freader.readLine()) != null) {
+
+						String[] st = s.split(" ");
+						for(int i=0;i<st.length-1;i++)
+						{
+							if(st[i].equalsIgnoreCase("module"))
+							{
+								flag=1;
+								break;
+							}
+						}
+						if(flag==1)
+						{
+							for(int i=0;i<st.length-1;i++)
+							{
+								if(st[i].equalsIgnoreCase("output"))
+								{
+										flag2=1;
+										break;
+								}
+							}
+						}
+						if(flag2==1)
+						{
+							for(int i=0;i<st.length-1;i++)
+							{
+								if(st[i].equalsIgnoreCase("input"))
+								{
+										flag1=1;
+										break;
+								}
+							}
+						}
+						if(flag1==1)
+						{
+							for(int i=0; i< st.length;i++)
+							{
+								if(st[i].equals("^"))
+								{
+									flagc=1;
+									break;
+								}
+								
+							}
+							if(flagc == 1)
+								break;
+						}
+						}
+						int degree =0;
+					/*	if(deg[0].length() > 0)
+						{
+							System.out.println("Degree"+deg[0].charAt(1));
+							degree = deg[0].charAt(1) - 47;
+							System.out.println(degree + " "+ flagc+ " " +flag1);
+						}
+						else
+							System.out.println("Code Not Correct");
+					*/	if(flagc == 1 && flag1 == 1)
+						{
+							System.out.println("Code is Correct");
+							ImageIcon xicon ;
+							java.net.URL imgURL = getClass().getResource("circuit.png");
+							if (imgURL != null)
+							{
+								xicon =  new ImageIcon(imgURL);
+							}
+							else
+							{
+								System.err.println("Couldn't find file: 1" );
+								xicon =  null;
+							}
+							JOptionPane.showMessageDialog(null, null, "Structural Level Diagram", JOptionPane.OK_OPTION, xicon);
+							
+							java.net.URL imgURL1 = getClass().getResource("schematic.png");
+							if (imgURL1 != null)
+							{
+								xicon =  new ImageIcon(imgURL1);
+							}
+							else
+							{
+								System.err.println("Couldn't find file: 2" );
+								xicon =  null;
+							}
+							JOptionPane.showMessageDialog(null, null, "Schematic Level Diagram", JOptionPane.OK_OPTION, xicon);
+							
+							JPanel lPanel = new JPanel() ;
+							add(lPanel, BorderLayout.CENTER);
+							lPanel.setLayout(new BorderLayout()); 
+							lPanel.setBackground(Color.gray);
+							//FormattedTextFieldDemo inp = new FormattedTextFieldDemo();
+			frame = new JFrame("8-4 Hamming Encoder");
+			frame.add(new FormattedTextField());
+			frame.pack();
+				frame.setVisible(true);
+					
+					
+					}
+					else
+						JOptionPane.showMessageDialog(null, "Code Not Correct","Try Again", JOptionPane.OK_OPTION);
+						
+					 }
+					}
+					catch(IOException ioe) {
+						System.out.println("Exception Caught : " +ioe.getMessage());
+					}
+			}
+		 });
+	}
+		public class FormattedTextField extends JPanel
+			implements PropertyChangeListener {
+		
+				//Labels to identify the fields
+				private JLabel sig_1,sig_2;
+
+				//Strings for the labels
+				private String sig1="Input data - 8 bit", sig2="Code Word - 12 bit";
+
+				//Fields for data entry
+				private JFormattedTextField x0f,x1f,x2f,x3f,x4f,x5f,x6f,x7f,x8f,x9f,x10f,x11f,x12f,x13f,x14f,x15f,x16f,x17f,x18f,x19f;
+
+				//Coefficients
+				private int x0c,x1c,x2c,x3c,x4c,x5c,x6c,x7c,x8c,x9c,x10c,x11c,x12c,x13c,x14c,x15c,x16c,x17c,x18c,x19c;
+
+				public FormattedTextField() {
+					super(new BorderLayout(10,30));
+
+					//Create the labels.
+					sig_1 = new JLabel(sig1);
+					sig_2 = new JLabel(sig2);
+
+					//Create the text fields and set them up.
+					try{
+						x0f = new JFormattedTextField(new MaskFormatter("*"));
+						x0f.setValue(new Integer(0));
+						x0f.setColumns(1);
+						x0f.addPropertyChangeListener("value", this);
+						
+						x1f = new JFormattedTextField(new MaskFormatter("*"));
+						x1f.setValue(new Integer(0));
+						x1f.setColumns(1);
+						x1f.addPropertyChangeListener("value", this);
+						
+						x2f = new JFormattedTextField(new MaskFormatter("*"));
+						x2f.setValue(new Integer(0));
+						x2f.setColumns(1);
+						x2f.addPropertyChangeListener("value", this);
+						
+						x3f = new JFormattedTextField(new MaskFormatter("*"));
+						x3f.setValue(new Integer(0));
+						x3f.setColumns(1);
+						x3f.addPropertyChangeListener("value", this);
+						
+						x4f = new JFormattedTextField(new MaskFormatter("*"));
+						x4f.setValue(new Integer(0));
+						x4f.setColumns(1);
+						x4f.addPropertyChangeListener("value", this);
+						
+						x5f = new JFormattedTextField(new MaskFormatter("*"));
+						x5f.setValue(new Integer(0));
+						x5f.setColumns(1);
+						x5f.addPropertyChangeListener("value", this);
+						
+						x6f = new JFormattedTextField(new MaskFormatter("*"));
+						x6f.setValue(new Integer(0));
+						x6f.setColumns(1);
+						x6f.addPropertyChangeListener("value", this);
+						
+						x7f = new JFormattedTextField(new MaskFormatter("*"));
+						x7f.setValue(new Integer(0));
+						x7f.setColumns(1);
+						x7f.addPropertyChangeListener("value", this);
+						
+						x8f = new JFormattedTextField(new MaskFormatter("*"));
+						x8f.setValue(new Integer(0));
+						x8f.setColumns(1);
+						x8f.setEditable(false);
+						x8f.setForeground(Color.red);
+						x8f.addPropertyChangeListener("value", this);
+						
+						x9f = new JFormattedTextField(new MaskFormatter("*"));
+						x9f.setValue(new Integer(0));
+						x9f.setColumns(1);
+						x9f.setEditable(false);
+						x9f.setForeground(Color.red);
+						x9f.addPropertyChangeListener("value", this);
+						
+						x10f = new JFormattedTextField(new MaskFormatter("*"));
+						x10f.setValue(new Integer(0));
+						x10f.setColumns(1);
+						x10f.setEditable(false);
+						x10f.setForeground(Color.red);
+						x10f.addPropertyChangeListener("value", this);
+						
+						x11f = new JFormattedTextField(new MaskFormatter("*"));
+						x11f.setValue(new Integer(0));
+						x11f.setColumns(1);
+						x11f.setEditable(false);
+						x11f.setForeground(Color.red);
+						x11f.addPropertyChangeListener("value", this);
+						
+						x12f = new JFormattedTextField(new MaskFormatter("*"));
+						x12f.setValue(new Integer(0));
+						x12f.setColumns(1);
+						x12f.setEditable(false);
+						x12f.setForeground(Color.red);
+						x12f.addPropertyChangeListener("value", this);
+						
+						x13f = new JFormattedTextField(new MaskFormatter("*"));
+						x13f.setValue(new Integer(0));
+						x13f.setColumns(1);
+						x13f.setEditable(false);
+						x13f.setForeground(Color.red);
+						x13f.addPropertyChangeListener("value", this);
+						
+						x14f = new JFormattedTextField(new MaskFormatter("*"));
+						x14f.setValue(new Integer(0));
+						x14f.setColumns(1);
+						x14f.setEditable(false);
+						x14f.setForeground(Color.red);
+						x14f.addPropertyChangeListener("value", this);
+						
+						x15f = new JFormattedTextField(new MaskFormatter("*"));
+						x15f.setValue(new Integer(0));
+						x15f.setColumns(1);
+						x15f.setEditable(false);
+						x15f.setForeground(Color.red);
+						x15f.addPropertyChangeListener("value", this);
+
+						x16f = new JFormattedTextField(new MaskFormatter("*"));
+						x16f.setValue(new Integer(0));
+						x16f.setColumns(1);
+						x16f.setEditable(false);
+						x16f.setForeground(Color.red);
+						x16f.addPropertyChangeListener("value", this);
+
+						x17f = new JFormattedTextField(new MaskFormatter("*"));
+						x17f.setValue(new Integer(0));
+						x17f.setColumns(1);
+						x17f.setEditable(false);
+						x17f.setForeground(Color.red);
+						x17f.addPropertyChangeListener("value", this);
+
+						x18f = new JFormattedTextField(new MaskFormatter("*"));
+						x18f.setValue(new Integer(0));
+						x18f.setColumns(1);
+						x18f.setEditable(false);
+						x18f.setForeground(Color.red);
+						x18f.addPropertyChangeListener("value", this);
+
+						x19f = new JFormattedTextField(new MaskFormatter("*"));
+						x19f.setValue(new Integer(0));
+						x19f.setColumns(1);
+						x19f.setEditable(false);
+						x19f.setForeground(Color.red);
+						x19f.addPropertyChangeListener("value", this);
+					}
+					catch(Exception e){
+					}
+	
+Container pane = frame.getContentPane();				
+			
+JButton button1,button;
+//JLabel label1, label2;
+
+	pane.setLayout(new GridBagLayout());
+	GridBagConstraints c = new GridBagConstraints();
+	
+//	label1 = new JLabel("Input Data - 8 bits");
+	c.weightx = 1.0;
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.gridx = 0;
+	c.gridy = 0;
+//c.ipady = 60;
+	c.insets = new Insets(50,50,0,0);  //top padding
+	pane.add(sig_1, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 1;
+	c.gridy = 0;
+//c.ipady = 0;
+	pane.add(x7f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 2;
+	c.gridy = 0;
+	pane.add(x6f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 3;
+	c.gridy = 0;
+	pane.add(x5f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 4;
+	c.gridy = 0;
+	pane.add(x4f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 5;
+	c.gridy = 0;
+	pane.add(x3f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 6;
+	c.gridy = 0;
+	pane.add(x2f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 7;
+	c.gridy = 0;
+	pane.add(x1f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 8;
+	c.gridy = 0;
+	pane.add(x0f, c);
+
+	button1 = new JButton("Submit");
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.5;
+	c.gridx = 0;
+	c.gridy = 1;
+	c.insets = new Insets(50,50,0,0);  //top padding
+	pane.add(button1, c);
+
+	c.weightx = 1.0;
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.gridx = 0;
+	c.gridy = 2;
+	c.insets = new Insets(50,50,50,0);  //top padding
+	pane.add(sig_2, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 1;
+	c.gridy = 2;
+	pane.add(x19f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 2;
+	c.gridy = 2;
+	pane.add(x18f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 3;
+	c.gridy = 2;
+	pane.add(x17f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 4;
+	c.gridy = 2;
+	pane.add(x16f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 5;
+	c.gridy = 2;
+	pane.add(x15f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 6;
+	c.gridy = 2;
+	pane.add(x14f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 7;
+	c.gridy = 2;
+	pane.add(x13f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 8;
+	c.gridy = 2;
+	pane.add(x12f, c);
+	
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 9;
+	c.gridy = 2;
+	pane.add(x11f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 10;
+	c.gridy = 2;
+	pane.add(x10f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 11;
+	c.gridy = 2;
+	pane.add(x9f, c);
+
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.weightx = 0.2;
+	c.gridx = 12;
+	c.gridy = 2;
+c.insets = new Insets(0,50,0,50);  //top padding
+	
+	pane.add(x8f, c);
+
+
+/*	button = new JButton("Long-Named Button 4");
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.ipady = 40;      //make this component tall
+	c.weightx = 0.0;
+	c.gridwidth = 3;
+	c.gridx = 0;
+	c.gridy = 1;
+	pane.add(button, c);
+
+	button = new JButton("5");
+	c.fill = GridBagConstraints.HORIZONTAL;
+	c.ipady = 0;       //reset to default
+	c.weighty = 1.0;   //request any extra vertical space
+	c.anchor = GridBagConstraints.PAGE_END; //bottom of space
+	c.insets = new Insets(10,0,0,0);  //top padding
+	c.gridx = 1;       //aligned with button 2
+	c.gridwidth = 2;   //2 columns wide
+	c.gridy = 2;       //third row
+	pane.add(button, c);
+*/
+
+/*					JButton button1 = new JButton("Submit");
+					//button1.setPreferredSize(new Dimension(10,10));
+					JPanel buttonPane = new JPanel(new GridLayout(1,1));
+					buttonPane.add(button1);
+					
+					JPanel labelPane = new JPanel(new GridLayout(1,0));
+					labelPane.add(sig_1);
+					labelPane.add(x7f);
+					labelPane.add(x6f);
+					labelPane.add(x5f);
+					labelPane.add(x4f);
+					labelPane.add(x3f);
+					labelPane.add(x2f);
+					labelPane.add(x1f);
+					labelPane.add(x0f);
+					//labelPane.add(button1);
+
+					JPanel labelPane1 = new JPanel(new GridLayout(1,0));
+					labelPane1.add(sig_2);
+					labelPane1.add(x19f);
+					labelPane1.add(x18f);
+					labelPane1.add(x17f);
+					labelPane1.add(x16f);
+					labelPane1.add(x15f);
+					labelPane1.add(x14f);
+					labelPane1.add(x13f);
+					labelPane1.add(x12f);
+					labelPane1.add(x11f);
+					labelPane1.add(x10f);
+					labelPane1.add(x9f);
+					labelPane1.add(x8f);
+					
+					setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+					add(labelPane, BorderLayout.NORTH);
+					add(buttonPane, BorderLayout.CENTER);
+					add(labelPane1, BorderLayout.SOUTH);
+*/
+
+					button1.addActionListener(new ActionListener(){
+
+							public void actionPerformed(ActionEvent ae){
+							a3=x7c;a5=x6c;a6=x5c;a7=x4c;a9=x3c;a10=x2c;a11=x1c;a12=x0c;
+							a4=0;a8=0;a2=0;a1=0;
+
+							a1=((a3^a5)^(a7^a9))^a11;
+							a2=((a3^a5)^(a7^a10))^a11;
+							a4=(a5^a6)^(a7^a12);
+							a8=(a9^a10)^(a11^a12);
+
+							x19f.setValue(new Integer(a1));
+							x18f.setValue(new Integer(a2));
+							x17f.setValue(new Integer(a3));
+							x16f.setValue(new Integer(a4));
+							x15f.setValue(new Integer(a5));
+							x14f.setValue(new Integer(a6));
+							x13f.setValue(new Integer(a7));
+							x12f.setValue(new Integer(a8));
+							x11f.setValue(new Integer(a9));
+							x10f.setValue(new Integer(a10));
+							x9f.setValue(new Integer(a11));
+							x8f.setValue(new Integer(a12));
+							
+							}
+
+					});
+				}
+				public void propertyChange(PropertyChangeEvent e) {
+					Object source = e.getSource();
+					if (source == x0f) {
+						x0c = ((Number)x0f.getValue()).intValue();
+						if(x0c >1)
+						{
+							x0f.setValue(new Integer(0));
+							flag=1;
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
+						}
+					} else if (source == x1f) {
+						x1c = ((Number)x1f.getValue()).intValue();
+						if(x1c >1)
+						{
+							x1f.setValue(new Integer(0));
+							flag=1;
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
+						}
+					} else if (source == x2f) {
+						x2c = ((Number)x2f.getValue()).intValue();
+						if(x2c >1)
+						{
+							x2f.setValue(new Integer(0));
+							flag=1;
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
+						}
+					} else if (source == x3f) {
+						x3c = ((Number)x3f.getValue()).intValue();
+						if(x3c >1)
+						{
+							x3f.setValue(new Integer(0));
+							flag=1;
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
+						}
+					} else if (source == x4f) {
+						x4c = ((Number)x4f.getValue()).intValue();
+						if(x4c >1)
+						{
+							x4f.setValue(new Integer(0));
+							flag=1;
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
+						}
+					} else if (source == x5f) {
+						x5c = ((Number)x5f.getValue()).intValue();
+						if(x5c >1)
+						{
+							x5f.setValue(new Integer(0));
+							flag=1;
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
+						}
+					} else if (source == x6f) {
+						x6c = ((Number)x6f.getValue()).intValue();
+						if(x6c >1)
+						{
+							x6f.setValue(new Integer(0));
+							flag=1;
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
+						}
+					} else if (source == x7f) {
+						x7c = ((Number)x7f.getValue()).intValue();
+						if(x7c >1)
+						{
+							x7f.setValue(new Integer(0));
+							flag=1;
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
+						}
+					}
+				}
+			}
+	private void verilogTestBenchEditor() {
+		JPanel cp = new JPanel();
+		add(cp, BorderLayout.CENTER);
+		JLabel head = new JLabel ( "<html><FONT COLOR=black SIZE=7 ><B>VERILOG TEST BENCH CODE EDITOR</B></FONT><br><br></html>", JLabel.CENTER);
+		 head.setBorder(BorderFactory.createRaisedBevelBorder( ));
+		 cp.add(head,BorderLayout.CENTER);
+		final JTextArea t = new JTextArea(35,120);	
+		 Border brd = BorderFactory.createMatteBorder(1, 1, 2, 2, Color.BLACK);
+		 t.setBorder(brd);
+		 head.setBorder(brd);
+		 cp.add(t);
+		 JScrollPane scrollPane = new JScrollPane(t);
+		 cp.add(scrollPane, BorderLayout.CENTER);
+		 JButton s= new JButton("RUN");
+		 cp.add(s);
+		 setSize(1400,650);
+		 setContentPane(cp);
+		 s.addActionListener(new ActionListener(){
+			 public void actionPerformed(ActionEvent as){
+				 try	{
+					 String str = t.getText(); 
+					 if(str.length()==0) {
+			            JOptionPane.showMessageDialog(null, "File is empty", "ERROR MESSAGE", 1);
+					/*	try 
+						{ 
+							Process p=Runtime.getRuntime().exec("iverilog -o dsn lfsr_tb.v lfsr.v"); 
+							p.waitFor();
+							Process pp=Runtime.getRuntime().exec("chmod 777 dsn"); 
+							pp.waitFor();
+							Process p1=Runtime.getRuntime().exec("vvp dsn"); 
+							p1.waitFor();
+							Process p1p=Runtime.getRuntime().exec("chmod 777 test.vcd"); 
+							p1p.waitFor();
+							Process p2=Runtime.getRuntime().exec("gtkwave test.vcd"); 
+							p2.waitFor();
+						}
+						catch(Exception et)
+						{
+							System.out.println("Exception Caught : " + et.getMessage());
+							}
+							*/
+					 }
+					 else{
+	
+						File f = new File("lfsr_tb.v");
+						FileWriter fw = new FileWriter(f);
+						fw.write(str);
+						fw.close();
+						JOptionPane.showMessageDialog(null, "TESTBENCH File is saved", "MESSAGE", 1);
+						try 
+						{ 
+							Process p=Runtime.getRuntime().exec("iverilog -o dsn lfsr_tb.v lfsr.v"); 
+							p.waitFor();
+							Process p1=Runtime.getRuntime().exec("vvp dsn"); 
+							p1.waitFor();
+							Process p2=Runtime.getRuntime().exec("gtkwave test.vcd"); 
+							p2.waitFor();
+						}
+						catch(Exception et)
+						{
+							System.out.println("Exception Caught : " + et.getMessage());
+						}
+					}
+						
+				 }
+				catch(IOException ioz) {
+						System.out.println("Exception Caught : " +ioz.getMessage());
+					}
+			}
+		 });
 	}
 	private  void createAndShowGUI() {
 
@@ -463,7 +1190,7 @@ c.insets = new Insets(0,50,0,50);  //top padding
 						{
 							x0f.setValue(new Integer(0));
 							flag=1;
-							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Virtual Labs", 1);
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
 						}
 					} else if (source == x1f) {
 						x1c = ((Number)x1f.getValue()).intValue();
@@ -471,7 +1198,7 @@ c.insets = new Insets(0,50,0,50);  //top padding
 						{
 							x1f.setValue(new Integer(0));
 							flag=1;
-							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Virtual Labs", 1);
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
 						}
 					} else if (source == x2f) {
 						x2c = ((Number)x2f.getValue()).intValue();
@@ -479,7 +1206,7 @@ c.insets = new Insets(0,50,0,50);  //top padding
 						{
 							x2f.setValue(new Integer(0));
 							flag=1;
-							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Virtual Labs", 1);
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
 						}
 					} else if (source == x3f) {
 						x3c = ((Number)x3f.getValue()).intValue();
@@ -487,7 +1214,7 @@ c.insets = new Insets(0,50,0,50);  //top padding
 						{
 							x3f.setValue(new Integer(0));
 							flag=1;
-							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Virtual Labs", 1);
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
 						}
 					} else if (source == x4f) {
 						x4c = ((Number)x4f.getValue()).intValue();
@@ -495,7 +1222,7 @@ c.insets = new Insets(0,50,0,50);  //top padding
 						{
 							x4f.setValue(new Integer(0));
 							flag=1;
-							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Virtual Labs", 1);
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
 						}
 					} else if (source == x5f) {
 						x5c = ((Number)x5f.getValue()).intValue();
@@ -503,7 +1230,7 @@ c.insets = new Insets(0,50,0,50);  //top padding
 						{
 							x5f.setValue(new Integer(0));
 							flag=1;
-							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Virtual Labs", 1);
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
 						}
 					} else if (source == x6f) {
 						x6c = ((Number)x6f.getValue()).intValue();
@@ -511,7 +1238,7 @@ c.insets = new Insets(0,50,0,50);  //top padding
 						{
 							x6f.setValue(new Integer(0));
 							flag=1;
-							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Virtual Labs", 1);
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
 						}
 					} else if (source == x7f) {
 						x7c = ((Number)x7f.getValue()).intValue();
@@ -519,7 +1246,7 @@ c.insets = new Insets(0,50,0,50);  //top padding
 						{
 							x7f.setValue(new Integer(0));
 							flag=1;
-							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Virtual Labs", 1);
+							JOptionPane.showMessageDialog(null,"Value Can only be 0 or 1","Binary", 1);
 						}
 					}
 				}
@@ -1197,7 +1924,7 @@ c.insets = new Insets(0,50,0,50);  //top padding
 			{
 				if(simulate_button_pressed == 1)
 				{
-			frame = new JFrame("FormattedTextFieldDemo");
+			frame = new JFrame("8-4 Hamming Encoder");
 			frame.add(new FormattedTextFieldDemo());
 			frame.pack();
 				frame.setVisible(true);
